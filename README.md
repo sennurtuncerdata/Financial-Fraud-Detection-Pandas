@@ -1,25 +1,21 @@
-#  Financial Fraud & Risk Analysis with Python (Pandas)
+# Financial Fraud & Risk Analysis with Python (Pandas)
 
-##  Project Overview
-This project focuses on analyzing synthetic financial transaction data to identify high-risk fraud patterns, suspicious transfer behaviors, and money laundering (AML) indicators using **Python (Pandas & NumPy)**.
+This project focuses on automated Anti-Money Laundering (AML) transaction monitoring scenarios using Python and Pandas.
 
-##  Tools & Technologies
-* **Language:** Python 3.x
-* **Libraries:** Pandas, NumPy
-* **Environment:** Google Colab / Jupyter Notebook
-* **Dataset Source:** Kaggle PaySim Financial Dataset
+## Tools & Technologies
+- **Language:** Python 3.x
+- **Libraries:** Pandas
+- **Environment:** Google Colab / Jupyter Notebook
+- **Dataset:** AML Bank Transactions Dataset (`aml_bank_transactions.csv`)
 
-##  Key Financial Findings & Analytical Methodology
-* **High-Value Anomaly Detection:** Filtered and flagged transactions exceeding $100,000 to identify potential money laundering risks.
-* **Behavioral Pattern Analysis:** Analyzed transfer vs. cash-out ratios, identifying that over 80% of flagged fraudulent activities occurred via specific high-speed transfer pathways with zero initial balances.
-* **Risk Categorization:** Developed a automated flagging logic to categorize transactions into High, Medium, and Low risk thresholds for compliance reporting.
+## Key Financial Findings & Analytical Methodology
+- **High-Value Threshold Detection:** Filtered and flagged transactions exceeding $5,000 to identify potential high-risk activities.
+- **Money Mule Account Analysis:** Aggregated transaction counts and volumes per sender to flag accounts acting as potential money mules.
+- **High-Volume Receiver Identification:** Identified recipient accounts receiving disproportionate transaction volumes (Structuring / Smurfing risks).
+- **Transaction Type Risk Breakdown:** Analyzed risk distribution across different transaction types (Transfer, Withdrawal, Deposit).
 
-##  Key Code Snippet (Fraud Detection Logic)
+## Key Code Snippet (AML Monitoring Logic)
 ```python
-# Filtering high-value transfers with zero initial balance (Classic Fraud Pattern)
-suspicious_transfers = df[
-    (df['type'] == 'TRANSFER') & 
-    (df['amount'] > 100000) & 
-    (df['oldbalanceOrg'] == 0)
-]
-print(f"Flagged Suspicious Transactions: {len(suspicious_transfers)}")
+# Filtering successful high-value transactions (> $5,000)
+high_risk_txns = df[(df['Transaction_Amount'] > 5000) & (df['Status'] == 'Success')]
+print(f"Flagged High-Risk Transactions: {len(high_risk_txns)}")
