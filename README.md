@@ -1,4 +1,4 @@
-# Financial Fraud & Risk Analysis with Python (Pandas)
+# Financial Fraud & Risk Analysis with Python (Pandas) 
 
 This project focuses on automated Anti-Money Laundering (AML) transaction monitoring scenarios using Python and Pandas.
 
